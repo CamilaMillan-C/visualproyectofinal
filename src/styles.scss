@@ -1,1 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
+// ===============================
+// PALETA PRINCIPAL
+// ===============================
+$primary-700: #0D1926;
+$primary-500: #122334; // Color base
+$primary-300: #2A415A;
+$primary-100: #DCE3EA;
+
+// ===============================
+// COLOR SECUNDARIO (ACCENT)
+// ===============================
+$accent-700: #205A8C;
+$accent-500: #2A74B6;
+$accent-300: #6FA7D6;
+
+// ===============================
+// ESTADOS Y FEEDBACK
+// ===============================
+$success: #28A745;
+$success-light: #CFF3D8;
+
+$warning: #FFC107;
+$warning-light: #FFF3CD;
+
+$error: #D9534F;
+$error-light: #F8D7DA;
+
+// ===============================
+// COLORES DE TEXTO
+// ===============================
+$text-primary: #0E0E0E;
+$text-secondary: #6C7A89;
+$text-on-dark: #FFFFFF;
+
+// ===============================
+// FONDOS
+// ===============================
+$background-base: #F4F7FA;
+$background-light: #DCE3EA;
+
+// BOTONES
+$btn-primary-bg: $primary-500;
+$btn-primary-hover: $primary-700;
+$btn-primary-text: $text-on-dark;
+
+$btn-secondary-bg: $accent-500;
+$btn-secondary-hover: $accent-700;
+$btn-secondary-text: $text-on-dark;
+
+// TARJETAS
+$card-bg: #ffffff;
+$card-border: $primary-100;
+$card-title: $primary-500;
+$card-subtitle: $primary-300;
+
+// INPUTS
+$input-border: $primary-300;
+$input-focus: $accent-500;
+$input-bg: #ffffff;

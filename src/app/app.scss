@@ -1,20 +1,64 @@
-.consulta-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
-  width: 100%;
-  flex-wrap: nowrap;
+body {
+    margin: 0px !important;
+}
 
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+.main {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Cambia la ruta a tu imagen */
+  background-image: url('/assets/buscar.png');
+  background-size: cover;        /* La imagen cubre todo */
+  background-position: center;   /* Centrada */
+  background-repeat: no-repeat;  /* No se repite */
+  background-attachment: fixed;  /* Hace que se vea elegante al hacer scroll */
+
+  /* Capa oscura para legibilidad (opcional) */
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45); /* oscurece el fondo */
+    backdrop-filter: blur(2px);     /* blur suave */
+    z-index: 1;
   }
 }
 
 .content {
-  max-width: none !important;
+  position: relative;
+  z-index: 2; /* Para estar encima del fondo */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.consulta-container {
+  background: rgba(255, 255, 255, 0.108);
+  padding: 35px;
+  border-radius: 12px;
+  width: 520px;
+  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.25);
+  color: white;
+}
+
+
+.header {
+  position: absolute;   /* Para que quede sobre el fondo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: transparent;   /* 100% transparente */
+  z-index: 10;               /* Encima del fondo */
 }
 
 .form-section {
@@ -243,6 +287,20 @@
   font-weight: 500;
   font-size: 0.95rem;
   color: #333;
+}
+
+.header-image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.header-image {
+  max-width: 280px;   /* Ajusta según tu logo */
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .spinner-overlay {
