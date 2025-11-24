@@ -20,19 +20,15 @@
     --gray-700: oklch(36.98% 0.014 302.71);
     --gray-400: oklch(70.9% 0.015 304.04);
 
-    --red-to-pink-to-purple-vertical-gradient: linear-gradient(
-      180deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
+    --red-to-pink-to-purple-vertical-gradient: linear-gradient(180deg,
+        var(--orange-red) 0%,
+        var(--vivid-pink) 50%,
+        var(--electric-violet) 100%);
 
-    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(
-      90deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
+    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(90deg,
+        var(--orange-red) 0%,
+        var(--vivid-pink) 50%,
+        var(--electric-violet) 100%);
 
     --pill-accent: var(--bright-blue);
 
@@ -134,9 +130,11 @@
   .pill-group .pill:nth-child(6n + 1) {
     --pill-accent: var(--bright-blue);
   }
+
   .pill-group .pill:nth-child(6n + 2) {
     --pill-accent: var(--electric-violet);
   }
+
   .pill-group .pill:nth-child(6n + 3) {
     --pill-accent: var(--french-violet);
   }
@@ -184,6 +182,49 @@
 
 <main class="main">
   <div class="content">
+    <div class="consulta-container">
+      <div class="form-section">
+
+        <h1 class="title">Realiza tu consulta</h1>
+
+        <h3 class="subtitle">Ingresa los datos</h3>
+
+        <form class="form-fields">
+
+          <div class="input-group">
+            <label for="habitaciones">Habitaciones</label>
+            <input id="habitaciones" type="number" placeholder="Ingrese Valor" [(ngModel)]="habitaciones"
+              [ngModelOptions]="{standalone: true}" />
+          </div>
+
+          <div class="input-group">
+            <label for="banos">Baños</label>
+            <input id="banos" type="number" placeholder="Ingrese Valor" [(ngModel)]="banos"
+              [ngModelOptions]="{standalone: true}" />
+          </div>
+
+          <div class="input-group">
+            <label for="parqueaderos">Parqueaderos</label>
+            <input id="parqueaderos" type="number" placeholder="Ingrese Valor" [(ngModel)]="parqueaderos"
+              [ngModelOptions]="{standalone: true}" />
+          </div>
+
+          <div class="input-group">
+            <label for="tamano">Tamaño (m2)</label>
+            <input id="tamano" type="number" placeholder="Ingrese Valor" [(ngModel)]="tamano"
+              [ngModelOptions]="{standalone: true}" />
+          </div>
+
+          <button class="btn-degradado submit-btn" type="button" (click)="consultar()">
+            Consultar
+          </button>
+
+        </form>
+      </div>
+
+    </div>
+
+    <!-- 
     <div class="left-side">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -230,8 +271,8 @@
           <clipPath id="a"><path fill="#fff" d="M0 0h982v239H0z" /></clipPath>
         </defs>
       </svg>
-      <h1>Hello, {{ title() }}</h1>
-      <p>Congratulations! Your app is running. 🎉</p>
+      <h1>Hola, {{ title() }}</h1>
+      <p>Gracias! Your app is running. 🎉</p>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
@@ -327,16 +368,60 @@
         </a>
       </div>
     </div>
+  -->
   </div>
 </main>
 
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- MODAL DE ERROR -->
+<div class="modal-backdrop" *ngIf="showErrorModal">
+  <div class="modal-window">
+    <h2>Error</h2>
+    <p>Por favor completa todos los campos antes de continuar.</p>
 
+    <button class="btn-close" (click)="cerrarModal()">
+      Cerrar
+    </button>
+  </div>
+</div>
+
+
+<div class="modal-backdrop" *ngIf="mostrarMapa">
+  <div class="modal-window" style="max-width: none!important;padding: 20px 30px!important;">
+    <div class="modal-header">
+      <h2>Tu búsqueda: </h2>
+
+      <!-- Botón para cerrar -->
+      <button class="close-btn" (click)="mostrarMapa = false">×</button>
+    </div>
+    <div class="features-container">
+      <div class="feature-item">
+        <img src="assets/002-cuarto.png" alt="Habitaciones">
+        <span>{{ habitaciones }} Habitaciones</span>
+      </div>
+
+      <div class="feature-item">
+        <img src="assets/003-banera.png" alt="Baños">
+        <span>{{ banos }} Baños</span>
+      </div>
+
+      <div class="feature-item">
+        <img src="assets/004-garaje.png" alt="Parqueaderos">
+        <span>{{ parqueaderos }} Parqueaderos</span>
+      </div>
+
+      <div class="feature-item">
+        <img src="assets/001-arquitectura.png" alt="Metros cuadrados">
+        <span>{{ tamano }} m²</span>
+      </div>
+    </div>
+    <div class="map-section">
+      <div echarts [options]="chartOption" class="echarts-map" style="width: 100%!important;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="spinner-overlay" *ngIf="cargando">
+  <div class="spinner"></div>
+</div>
 
 <router-outlet />
